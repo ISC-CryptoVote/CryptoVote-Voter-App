@@ -48,6 +48,9 @@ class _RegistrationRejectedScreenState
             child: SingleChildScrollView(
               child: Column(
                 children: <Widget>[
+                  SizedBox(
+                    height: 30,
+                  ),
                   Align(
                     alignment: Alignment.topLeft,
                     child: ElevatedButton(
@@ -72,8 +75,8 @@ class _RegistrationRejectedScreenState
                   Text(
                     "Registration Failed",
                     style: TextStyle(
-                      color: Color(0xFFCE1E1E),
-                      fontSize: 20,
+                      color: Color(0xFF8C3838),
+                      fontSize: 40,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -84,7 +87,7 @@ class _RegistrationRejectedScreenState
                     "Please ensure all required fields are filled out correctly and try again. Press continue button to proceed to the registration screen.",
                     style: TextStyle(
                       color: Color(0xFF1165A6),
-                      fontSize: 15,
+                      fontSize: 20,
                       fontWeight: FontWeight.w600,
                     ),
                     textAlign: TextAlign.center,
@@ -113,7 +116,7 @@ class _RegistrationRejectedScreenState
                               child: Text(
                                 "Continue",
                                 style: TextStyle(
-                                  color: Color(0xFF000000),
+                                  color: Colors.white,
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
                                 ),

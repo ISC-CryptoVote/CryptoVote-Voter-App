@@ -94,6 +94,9 @@ class _OtpScreenState extends State<OtpScreen> {
               child: SingleChildScrollView(
                 child: Column(
                   children: <Widget>[
+                    SizedBox(
+                      height: 30,
+                    ),
                     Align(
                       alignment: Alignment.topLeft,
                       child: ElevatedButton(
@@ -119,7 +122,7 @@ class _OtpScreenState extends State<OtpScreen> {
                       "Verification",
                       style: TextStyle(
                         color: Color(0xFF393939),
-                        fontSize: 20,
+                        fontSize: 40,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -130,7 +133,7 @@ class _OtpScreenState extends State<OtpScreen> {
                       "Enter the verification code sent to the number",
                       style: TextStyle(
                         color: Color(0xFF1165A6),
-                        fontSize: 15,
+                        fontSize: 20,
                         fontWeight: FontWeight.w600,
                       ),
                       textAlign: TextAlign.center,
@@ -142,7 +145,7 @@ class _OtpScreenState extends State<OtpScreen> {
                       widget.phoneNumber,
                       style: TextStyle(
                         color: Color(0xFF09395D),
-                        fontSize: 15,
+                        fontSize: 22,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -234,7 +237,7 @@ class _OtpScreenState extends State<OtpScreen> {
                                 child: Text(
                                   "Continue",
                                   style: TextStyle(
-                                    color: Color(0xFF000000),
+                                    color: Colors.white,
                                     fontSize: 16,
                                     fontWeight: FontWeight.w600,
                                   ),
@@ -254,7 +257,7 @@ class _OtpScreenState extends State<OtpScreen> {
                       "Didn't receive a code?",
                       style: TextStyle(
                         color: Color(0xFF0E4F82),
-                        fontSize: 15,
+                        fontSize: 17,
                         fontWeight: FontWeight.w400,
                       ),
                       textAlign: TextAlign.center,
@@ -265,7 +268,7 @@ class _OtpScreenState extends State<OtpScreen> {
                         "Resend",
                         style: TextStyle(
                           color: Color(0xFF0E4F82),
-                          fontSize: 15,
+                          fontSize: 17,
                           fontWeight: FontWeight.w400,
                           decoration: TextDecoration.underline,
                         ),

@@ -56,6 +56,9 @@ class _MnemonicScreenState extends State<MnemonicScreen> {
             child: SingleChildScrollView(
               child: Column(
                 children: <Widget>[
+                  SizedBox(
+                    height: 30,
+                  ),
                   Align(
                     alignment: Alignment.topLeft,
                     child: ElevatedButton(
@@ -81,7 +84,7 @@ class _MnemonicScreenState extends State<MnemonicScreen> {
                     "Secret Generation",
                     style: TextStyle(
                       color: Color(0xFF393939),
-                      fontSize: 20,
+                      fontSize: 40,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -92,16 +95,19 @@ class _MnemonicScreenState extends State<MnemonicScreen> {
                     "Now you have almost completed the registration process. On this screen you will be displayed a set of mnemonic words which can be used to recover your voting application if you have unexpectedly removed voting application or reset your phone.",
                     style: TextStyle(
                       color: Color(0xFF1165A6),
-                      fontSize: 15,
+                      fontSize: 20,
                       fontWeight: FontWeight.w600,
                     ),
                     textAlign: TextAlign.center,
                   ),
+                  SizedBox(
+                    height: 20,
+                  ),
                   Text(
                     "Plaese keep this secret phrase in a secure place.",
                     style: TextStyle(
-                      color: Color(0xFFCE1E1E),
-                      fontSize: 15,
+                      color: Color(0xFFA31F1F),
+                      fontSize: 20,
                       fontWeight: FontWeight.w600,
                     ),
                     textAlign: TextAlign.center,
@@ -127,7 +133,7 @@ class _MnemonicScreenState extends State<MnemonicScreen> {
                         mnemonicPhrase,
                         style: TextStyle(
                           color: Color(0xFF404040),
-                          fontSize: 15,
+                          fontSize: 25,
                           fontWeight: FontWeight.w600,
                         ),
                         textAlign: TextAlign.center,
@@ -158,7 +164,7 @@ class _MnemonicScreenState extends State<MnemonicScreen> {
                               child: Text(
                                 "Continue",
                                 style: TextStyle(
-                                  color: Color(0xFF000000),
+                                  color: Colors.white,
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
                                 ),

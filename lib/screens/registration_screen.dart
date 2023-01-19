@@ -23,7 +23,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     super.initState();
 
     macHashController.text =
-        "97c91b9d64940936e39f1b39d1fc944a8e4798b4355f6ca797da2ee0796e9e74";
+        "97c91b9d64940936e39f1b39d1fc944a8e4798b4355f6ca797da2ee0796e9e7497c91b9d64940936e39f1b39d1fc944a8e4798b4355f6ca797da2ee0796e9e74";
   }
 
   void onSubmit() async {
@@ -70,11 +70,14 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  SizedBox(
+                    height: 30,
+                  ),
                   Text(
                     "Register as a Voter",
                     style: TextStyle(
                       color: Color(0xFF393939),
-                      fontSize: 20,
+                      fontSize: 40,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -105,7 +108,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   SizedBox(
                     height: 20,
                   ),
-                  CustomTextField(
+                  CustomTextBox(
                     topic: "Mac Hash",
                     controller: macHashController,
                     enabled: false,
@@ -134,7 +137,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                               child: Text(
                                 "Submit",
                                 style: TextStyle(
-                                  color: Color(0xFF000000),
+                                  color: Colors.white,
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
                                 ),
@@ -172,9 +175,54 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 50,
+      height: 55,
       child: TextField(
         enabled: enabled,
+        maxLines: 2,
+        style: TextStyle(
+          color: Color(0xFF000000),
+          fontSize: 16,
+          fontWeight: FontWeight.w400,
+        ),
+        decoration: InputDecoration(
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+          labelText: topic,
+          labelStyle: TextStyle(
+            color: Color(0xFF0B3C61),
+            fontSize: 16,
+            fontWeight: FontWeight.w400,
+          ),
+          prefixIconConstraints: BoxConstraints(
+            minWidth: 20,
+          ),
+        ),
+        controller: controller,
+      ),
+    );
+  }
+}
+
+class CustomTextBox extends StatelessWidget {
+  CustomTextBox({
+    Key? key,
+    required this.controller,
+    required this.topic,
+    this.enabled = true,
+  }) : super(key: key);
+
+  final TextEditingController controller;
+  final String topic;
+  bool enabled;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: TextField(
+        enabled: enabled,
+        // maxLines: 5,
+        maxLines: 3,
         style: TextStyle(
           color: Color(0xFF000000),
           fontSize: 16,

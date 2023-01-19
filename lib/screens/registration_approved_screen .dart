@@ -55,6 +55,9 @@ class _RegistrationApprovedScreenState
             child: SingleChildScrollView(
               child: Column(
                 children: <Widget>[
+                  SizedBox(
+                    height: 30,
+                  ),
                   Align(
                     alignment: Alignment.topLeft,
                     child: ElevatedButton(
@@ -79,8 +82,8 @@ class _RegistrationApprovedScreenState
                   Text(
                     "Registration Approved",
                     style: TextStyle(
-                      color: Color(0xFF299A42),
-                      fontSize: 20,
+                      color: Color(0xFF267539),
+                      fontSize: 40,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -91,7 +94,7 @@ class _RegistrationApprovedScreenState
                     "You have been successfully registered to the CryptoVote E-Voting system. Please press continue to proceed to the next step of the registration process.",
                     style: TextStyle(
                       color: Color(0xFF1165A6),
-                      fontSize: 15,
+                      fontSize: 20,
                       fontWeight: FontWeight.w600,
                     ),
                     textAlign: TextAlign.center,
@@ -120,7 +123,7 @@ class _RegistrationApprovedScreenState
                               child: Text(
                                 "Continue",
                                 style: TextStyle(
-                                  color: Color(0xFF000000),
+                                  color: Colors.white,
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
                                 ),
