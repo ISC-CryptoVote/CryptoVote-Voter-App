@@ -29,7 +29,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     CryptographyUtils cryptographyUtils = CryptographyUtils();
     CommonUtils commonUtils = CommonUtils();
     macHashController.text =
-        cryptographyUtils.getHash(commonUtils.getMacOfDevice().toString());
+        cryptographyUtils
+        .convertStringToHash(commonUtils.getMacOfDevice().toString());
   }
 
   void onSubmit() async {

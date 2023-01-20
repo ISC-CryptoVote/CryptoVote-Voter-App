@@ -1,4 +1,5 @@
 import 'package:cryptovote_voter_app/screens/screens.dart';
+import 'package:cryptovote_voter_app/utils/cryptography_utils.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -12,21 +13,23 @@ class _HomeScreenState extends State<HomeScreen> {
   bool loading = false;
 
   void onGoToVoting() async {
-    setState(() {
-      loading = true;
-    });
+    // setState(() {
+    //   loading = true;
+    // });
 
-    await Future.delayed(Duration(seconds: 1));
+    // await Future.delayed(Duration(seconds: 1));
 
-    Navigator.of(context).push(
-      MaterialPageRoute<void>(
-        builder: (BuildContext context) => VotingScreen(),
-      ),
-    );
+    // Navigator.of(context).push(
+    //   MaterialPageRoute<void>(
+    //     builder: (BuildContext context) => VotingScreen(),
+    //   ),
+    // );
 
-    setState(() {
-      loading = false;
-    });
+    // setState(() {
+    //   loading = false;
+    // });
+
+    CryptographyUtils().generateRSAKeyPair();
   }
 
   void onViewResult() async {
