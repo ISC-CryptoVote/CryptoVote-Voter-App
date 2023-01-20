@@ -26,7 +26,7 @@ class _RegistrationApprovedScreenState
 
     Navigator.of(context).push(
       MaterialPageRoute<void>(
-        builder: (BuildContext context) => MnemonicScreen(),
+        builder: (BuildContext context) => SecretGenerationScreen(),
       ),
     );
   }
@@ -42,7 +42,7 @@ class _RegistrationApprovedScreenState
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-                Color(0xFF1A98F8),
+                Color(0xFF4BAEF9),
                 Color(0xFFCAE4F7),
               ],
             )),

@@ -1,7 +1,12 @@
 export 'home_screen.dart';
 export 'registration_screen.dart';
-export 'otp_screen.dart';
+export 'registration_verification_screen.dart';
 export 'onboarding_screen.dart';
 export 'registration_rejected_screen.dart';
 export 'registration_approved_screen .dart';
 export 'mnemonic_screen.dart';
+export 'voting_screen.dart';
+export 'voting_results_screen.dart';
+export 'voting_successful_screen.dart';
+export 'voting_verification_screen.dart';
+export 'registration_unconfirmed_screen.dart';

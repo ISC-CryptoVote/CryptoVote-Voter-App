@@ -1,3 +1,4 @@
+import 'package:cryptovote_voter_app/screens/registration_screen.dart';
 import 'package:flutter/material.dart';
 
 class RegistrationRejectedScreen extends StatefulWidget {
@@ -17,7 +18,13 @@ class _RegistrationRejectedScreenState
       loading = true;
     });
 
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(Duration(seconds: 1));
+
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (BuildContext context) => RegistrationScreen(),
+      ),
+    );
 
     setState(() {
       loading = false;
@@ -35,7 +42,7 @@ class _RegistrationRejectedScreenState
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-                Color(0xFF1A98F8),
+                Color(0xFF4BAEF9),
                 Color(0xFFCAE4F7),
               ],
             )),

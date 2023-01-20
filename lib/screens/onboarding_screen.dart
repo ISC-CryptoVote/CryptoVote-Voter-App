@@ -1,3 +1,4 @@
+import 'package:cryptovote_voter_app/controllers/auth_controller.dart';
 import 'package:cryptovote_voter_app/screens/screens.dart';
 import 'package:flutter/material.dart';
 
@@ -22,17 +23,43 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       loading = true;
     });
 
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(Duration(seconds: 1));
+
+    String status = AuthController().getVoterStatus();
+
+    if (status == "Unconfirmed") {
+      // Navigate to Registration screen
+      Navigator.of(context).push(
+        MaterialPageRoute<void>(
+          builder: (BuildContext context) => const RegistrationScreen(),
+        ),
+      );
+    } else if (status == "Pending") {
+      // Navigate to Registration unconfirmed screen
+      Navigator.of(context).push(
+        MaterialPageRoute<void>(
+          builder: (BuildContext context) => RegistrationUnconfirmedScreen(),
+        ),
+      );
+    } else if (status == "Approved") {
+      // Navigate to Registration Approved screen
+      Navigator.of(context).push(
+        MaterialPageRoute<void>(
+          builder: (BuildContext context) => RegistrationApprovedScreen(),
+        ),
+      );
+    } else if (status == "Rejected") {
+      // Navigate to Registration Rejected screen
+      Navigator.of(context).push(
+        MaterialPageRoute<void>(
+          builder: (BuildContext context) => RegistrationRejectedScreen(),
+        ),
+      );
+    }
 
     setState(() {
       loading = false;
     });
-
-    Navigator.of(context).push(
-      MaterialPageRoute<void>(
-        builder: (BuildContext context) => const RegistrationScreen(),
-      ),
-    );
   }
 
   @override

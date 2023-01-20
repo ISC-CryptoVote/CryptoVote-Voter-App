@@ -1,0 +1,1 @@
+String BASEURL = 'cryptovote.ml';

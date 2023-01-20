@@ -1,14 +1,15 @@
+import 'package:cryptovote_voter_app/utils/cryptography_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:cryptovote_voter_app/screens/screens.dart';
 
-class MnemonicScreen extends StatefulWidget {
-  MnemonicScreen({Key? key}) : super(key: key);
+class SecretGenerationScreen extends StatefulWidget {
+  SecretGenerationScreen({Key? key}) : super(key: key);
 
   @override
-  _MnemonicScreenState createState() => _MnemonicScreenState();
+  _SecretGenerationScreenState createState() => _SecretGenerationScreenState();
 }
 
-class _MnemonicScreenState extends State<MnemonicScreen> {
+class _SecretGenerationScreenState extends State<SecretGenerationScreen> {
   bool loading = false;
 
   String mnemonicPhrase =
@@ -19,7 +20,11 @@ class _MnemonicScreenState extends State<MnemonicScreen> {
       loading = true;
     });
 
-    await Future.delayed(Duration(seconds: 2));
+    CryptographyUtils cryptographyUtils = CryptographyUtils();
+
+    cryptographyUtils.generateRSAKeyPair();
+
+    // await Future.delayed(Duration(seconds: 2));
 
     setState(() {
       loading = false;
@@ -43,7 +48,7 @@ class _MnemonicScreenState extends State<MnemonicScreen> {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-                Color(0xFF1A98F8),
+                Color(0xFF4BAEF9),
                 Color(0xFFCAE4F7),
               ],
             )),
@@ -92,7 +97,7 @@ class _MnemonicScreenState extends State<MnemonicScreen> {
                     height: 40,
                   ),
                   Text(
-                    "Now you have almost completed the registration process. On this screen you will be displayed a set of mnemonic words which can be used to recover your voting application if you have unexpectedly removed voting application or reset your phone.",
+                    "Now you have almost completed the registration process. On this screen you will be generating a secret key which will be kept inside this application. For the upcomming voting processes the app will be using this secret key to identify yourself. Therefore do not delete or loose this application. If you loose the application or the mobile device please contact the voting authority.",
                     style: TextStyle(
                       color: Color(0xFF1165A6),
                       fontSize: 20,
@@ -104,42 +109,51 @@ class _MnemonicScreenState extends State<MnemonicScreen> {
                     height: 20,
                   ),
                   Text(
-                    "Plaese keep this secret phrase in a secure place.",
+                    "By pressing continue button you will be navigated to the voting application home.",
                     style: TextStyle(
-                      color: Color(0xFFA31F1F),
+                      color: Color(0xFF1165A6),
                       fontSize: 20,
                       fontWeight: FontWeight.w600,
                     ),
                     textAlign: TextAlign.center,
                   ),
-                  SizedBox(
-                    height: 40,
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Color(0xFFA4D4F9),
-                      border: Border.all(
-                        color: Colors.black,
-                        width: 1,
-                      ),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 20,
-                        horizontal: 20,
-                      ),
-                      child: Text(
-                        mnemonicPhrase,
-                        style: TextStyle(
-                          color: Color(0xFF404040),
-                          fontSize: 25,
-                          fontWeight: FontWeight.w600,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ),
+                  // Text(
+                  //   "Plaese keep this secret phrase in a secure place.",
+                  //   style: TextStyle(
+                  //     color: Color(0xFFA31F1F),
+                  //     fontSize: 20,
+                  //     fontWeight: FontWeight.w600,
+                  //   ),
+                  //   textAlign: TextAlign.center,
+                  // ),
+                  // SizedBox(
+                  //   height: 40,
+                  // ),
+                  // Container(
+                  //   decoration: BoxDecoration(
+                  //     color: Color(0xFFA4D4F9),
+                  //     border: Border.all(
+                  //       color: Colors.black,
+                  //       width: 1,
+                  //     ),
+                  //     borderRadius: BorderRadius.circular(20),
+                  //   ),
+                  //   child: Padding(
+                  //     padding: const EdgeInsets.symmetric(
+                  //       vertical: 20,
+                  //       horizontal: 20,
+                  //     ),
+                  //     child: Text(
+                  //       mnemonicPhrase,
+                  //       style: TextStyle(
+                  //         color: Color(0xFF404040),
+                  //         fontSize: 25,
+                  //         fontWeight: FontWeight.w600,
+                  //       ),
+                  //       textAlign: TextAlign.center,
+                  //     ),
+                  //   ),
+                  // ),
                   SizedBox(
                     height: 40,
                   ),

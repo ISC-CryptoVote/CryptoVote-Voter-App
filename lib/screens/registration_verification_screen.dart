@@ -1,16 +1,21 @@
+import 'package:cryptovote_voter_app/controllers/auth_controller.dart';
 import 'package:cryptovote_voter_app/screens/screens.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
 
-class OtpScreen extends StatefulWidget {
+class RegistrationVerificationScreen extends StatefulWidget {
   final String phoneNumber;
-  OtpScreen({Key? key, required this.phoneNumber}) : super(key: key);
+  RegistrationVerificationScreen({Key? key, required this.phoneNumber})
+      : super(key: key);
 
   @override
-  _OtpScreenState createState() => _OtpScreenState();
+  _RegistrationVerificationScreenState createState() =>
+      _RegistrationVerificationScreenState();
 }
 
-class _OtpScreenState extends State<OtpScreen> {
+class _RegistrationVerificationScreenState
+    extends State<RegistrationVerificationScreen> {
   final pinController = TextEditingController();
   final focusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
@@ -18,14 +23,32 @@ class _OtpScreenState extends State<OtpScreen> {
   bool loading = false;
 
   void onContinue() async {
-    print(pinController.value.text);
-
     setState(() {
       loading = true;
     });
 
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(Duration(seconds: 1));
 
+    bool result = await AuthController().phoneVerify(
+      widget.phoneNumber,
+      pinController.value.text,
+    );
+
+    if (result) {
+      Navigator.of(context).push(
+        MaterialPageRoute<void>(
+          builder: (BuildContext context) =>
+              RegistrationVerificationScreen(phoneNumber: "0711737706"),
+        ),
+      );
+    } else {
+      Get.snackbar("Otp Verification Failed!",
+        "Incorrect Otp address please try again.",
+        backgroundColor: Color(0xFF943029),
+        colorText: Colors.white,
+        snackPosition: SnackPosition.TOP,
+      );
+    }
     setState(() {
       loading = false;
     });
@@ -81,7 +104,7 @@ class _OtpScreenState extends State<OtpScreen> {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  Color(0xFF1A98F8),
+                  Color(0xFF4BAEF9),
                   Color(0xFFCAE4F7),
                 ],
               )),
@@ -119,7 +142,7 @@ class _OtpScreenState extends State<OtpScreen> {
                       height: 20,
                     ),
                     Text(
-                      "Verification",
+                      "Registration Verification",
                       style: TextStyle(
                         color: Color(0xFF393939),
                         fontSize: 40,

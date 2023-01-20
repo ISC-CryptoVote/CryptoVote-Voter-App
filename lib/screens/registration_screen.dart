@@ -1,5 +1,9 @@
+import 'package:cryptovote_voter_app/controllers/auth_controller.dart';
 import 'package:cryptovote_voter_app/screens/screens.dart';
+import 'package:cryptovote_voter_app/utils/common_utils.dart';
+import 'package:cryptovote_voter_app/utils/cryptography_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({Key? key}) : super(key: key);
@@ -22,8 +26,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   void initState() {
     super.initState();
 
+    CryptographyUtils cryptographyUtils = CryptographyUtils();
+    CommonUtils commonUtils = CommonUtils();
     macHashController.text =
-        "97c91b9d64940936e39f1b39d1fc944a8e4798b4355f6ca797da2ee0796e9e7497c91b9d64940936e39f1b39d1fc944a8e4798b4355f6ca797da2ee0796e9e74";
+        cryptographyUtils.getHash(commonUtils.getMacOfDevice().toString());
   }
 
   void onSubmit() async {
@@ -31,17 +37,36 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       loading = true;
     });
 
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(Duration(seconds: 1));
+
+    bool result = await AuthController().registerVoter(
+        nameController.text,
+        nicController.text,
+        addressController.text,
+        gnDivisionController.text,
+        phoneNumberController.text,
+        macHashController.text);
+
+    if (result) {
+      Navigator.of(context).push(
+        MaterialPageRoute<void>(
+          builder: (BuildContext context) =>
+              RegistrationVerificationScreen(phoneNumber: "0711737706"),
+        ),
+      );
+    } else {
+      Get.snackbar(
+        "Registration Failed!",
+        "Something is wrong please check your details and try again.",
+        backgroundColor: Color(0xFF943029),
+        colorText: Colors.white,
+        snackPosition: SnackPosition.TOP,
+      );
+    }
 
     setState(() {
       loading = false;
     });
-
-    Navigator.of(context).push(
-      MaterialPageRoute<void>(
-        builder: (BuildContext context) => OtpScreen(phoneNumber: "0711737706"),
-      ),
-    );
   }
 
   @override
@@ -56,7 +81,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-                Color(0xFF1A98F8),
+                Color(0xFF4BAEF9),
                 Color(0xFFCAE4F7),
               ],
             )),
